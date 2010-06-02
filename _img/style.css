@@ -1,7 +1,7 @@
 body {
 
 	background: #ddeef6;
-	
+
 	padding-bottom: 0;
 	margin-bottom: 0;
 
@@ -25,16 +25,16 @@ a {
 }
 
 img {
-	
+
 	border: 0;
-	
+
 }
 
 form {
-	
+
 	padding: 0;
 	margin: 0;
-	
+
 }
 
 .box {
@@ -42,6 +42,10 @@ form {
 	background: #fcfcfc;
 	padding: 5px;
 	margin-bottom: 10px;
+
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 
 }
 
@@ -72,9 +76,9 @@ big {
 .menuitems .a, .row.a, .menuitems .b, .row.b {
 
 	padding: 3px;
-	
+
 	display: block;
-	
+
 	font-weight: normal;
 
 }
@@ -90,15 +94,15 @@ big {
 }
 
 .menuitems .b, .row.b {
-	
+
 	background-color: #f8f8f8;
-	
+
 }
 
 .square {
 
 	padding: 5px;
-	
+
 	margin-bottom: 5px;
 
 }
@@ -112,9 +116,9 @@ big {
 .square.menu {
 
 	color: #fff;
-	
+
 	margin-bottom: 0px;
-	
+
 	cursor: pointer;
 
 }
@@ -216,15 +220,21 @@ input[type=submit]:hover, input.button:hover {
 }
 
 input[type=submit].green, input.button.green {
+
 	background-color: #d9ffcf;
 	border-color: #ade5a3;
+
 	color: #1b801b;			
+
 }
 
 input[type=submit].red, input.button.red {
+
 	background-color: #ffcfcf;
 	border-color: #e5a3a3;
+
 	color: #801b1b;		
+
 }
 
 td.label {
