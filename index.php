@@ -114,11 +114,49 @@
 						}
 
 					}
+					
+					$query = $db->query( "SELECT DISTINCT user_id FROM sessions WHERE user_id != '0'" );
 
 				?>
 				
+				<div class="box">
+
+					<div class="square title">
+						<strong>Users online (<?php echo $db->num( $query ); ?>)</strong>
+					</div>
+
+					<div class="content">
+
+						<?php
+
+							$i = 1;
+
+							while( $array = $db->assoc( $query ) ) {
+
+								$query2 = $db->query( "SELECT * FROM users WHERE id = '{$array['user_id']}'" );
+								$array2 = $db->assoc( $query2 );
+
+								$query4 = $db->query( "SELECT * FROM usergroups WHERE id = '{$array2['displaygroup']}'" );
+								$array4 = $db->assoc( $query4 );
+
+								echo "<span style=\"color: #{$array4['colour']}; font-weight: bold;\">";
+								echo $array2['username'];
+								echo "</span>";
+								echo ( $i == $db->num( $query ) ) ? '' : ', ';
+
+								$i++;
+
+							}
+
+						?>
+
+					</div>
+
+				</div>
+
 			</div>
-			
+
+
 			<div style="float: left; width: 590px; padding-left: 10px;">
 			
 				<?php
