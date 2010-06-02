@@ -1,0 +1,244 @@
+body {
+
+	background: #ddeef6;
+	
+	padding-bottom: 0;
+	margin-bottom: 0;
+
+}
+
+body, a, td, th, input, textarea, select {
+
+	font-family: Arial;
+	font-size: 12px;
+
+	color: #444;
+
+	text-decoration: none;
+
+}
+
+a {
+
+	font-weight: bold;
+
+}
+
+img {
+	
+	border: 0;
+	
+}
+
+form {
+	
+	padding: 0;
+	margin: 0;
+	
+}
+
+.box {
+
+	background: #fcfcfc;
+	padding: 5px;
+	margin-bottom: 10px;
+
+}
+
+.box .content {
+
+	padding: 0px 5px 5px 5px;
+
+}
+
+big {
+
+	padding-bottom: 5px;
+
+	display: block;
+	color: #8899a1;
+
+	font-size: 24px;
+	font-weight: bold;
+
+}
+
+.menuitems {
+
+	margin-top: 5px;
+
+}
+
+.menuitems .a, .row.a, .menuitems .b, .row.b {
+
+	padding: 3px;
+	
+	display: block;
+	
+	font-weight: normal;
+
+}
+
+.row {
+	padding: 5px;
+}
+
+.menuitems .a, .row.a {
+
+	background-color: #f3f3f3;
+
+}
+
+.menuitems .b, .row.b {
+	
+	background-color: #f8f8f8;
+	
+}
+
+.square {
+
+	padding: 5px;
+	
+	margin-bottom: 5px;
+
+}
+
+.square strong {
+
+	font-size: 14px;
+
+}
+
+.square.menu {
+
+	color: #fff;
+	
+	margin-bottom: 0px;
+	
+	cursor: pointer;
+
+}
+
+.square.title {
+
+	background-color: #eee;
+	color: #444;
+
+}
+
+.square.good, .help.good {
+
+	background-color: #d9ffcf;
+	border-color: #ade5a3;
+	color: #1b801b;
+
+}
+
+.square.bad, .help.bad {
+
+	background-color: #ffcfcf;
+	border-color: #e5a3a3;
+	color: #801b1b;
+
+}
+
+.help {
+
+	padding: 5px;
+
+	font-size: 12px;
+
+	height: 16px;
+
+	position: relative;
+	left: -9px;
+
+	border: 1px #ccc solid;
+	border-bottom-width: 2px;
+
+	-moz-border-radius-topright: 3px;
+	-webkit-border-radius-topright: 3px;
+	border-radius-topright: 3px;
+
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-radius-bottomright: 3px;
+	border-radius-bottomright: 3px;
+}
+
+.help.grey {
+
+	background-color: #eee;
+}
+
+input, textarea, select {
+
+	border: 1px #e0e0e0 solid;
+	border-bottom-width: 2px;
+
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	padding: 5px;
+
+	font-size: 14px;
+	font-weight: bold;
+
+}
+
+input:focus {
+
+	border-color: #ccc;
+
+	background-color: #fafafa;
+
+}
+
+input[type=submit], input.button {
+
+	color: #888;
+
+	border-color: #ddd;
+
+	background: #f0f0f0;
+
+	cursor: pointer;
+
+	padding: 3px;
+
+}
+
+input[type=submit]:hover, input.button:hover {
+
+	background-color: #e6e6e6;
+	border-color: #d6d6d6;
+
+}
+
+input[type=submit].green, input.button.green {
+	background-color: #d9ffcf;
+	border-color: #ade5a3;
+	color: #1b801b;			
+}
+
+input[type=submit].red, input.button.red {
+	background-color: #ffcfcf;
+	border-color: #e5a3a3;
+	color: #801b1b;		
+}
+
+td.label {
+
+	width: 25%;
+
+	text-align: right;
+
+}
+
+td.field {
+
+	width: 200px;
+
+	text-align: right;
+
+}
