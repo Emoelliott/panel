@@ -115,7 +115,7 @@
 
 					}
 					
-					$query = $db->query( "SELECT DISTINCT user_id FROM sessions WHERE user_id != '0'" );
+					$query = $db->query( "SELECT DISTINCT user_id FROM sessions WHERE user_id != '0' ORDER BY stamp DESC" );
 
 				?>
 				
@@ -125,32 +125,40 @@
 						<strong>Users online (<?php echo $db->num( $query ); ?>)</strong>
 					</div>
 
-					<div class="content">
 
-						<?php
+					<?php
 
-							$i = 1;
+						$j = "a";
 
-							while( $array = $db->assoc( $query ) ) {
+						while( $array = $db->assoc( $query ) ) {
 
-								$query2 = $db->query( "SELECT * FROM users WHERE id = '{$array['user_id']}'" );
-								$array2 = $db->assoc( $query2 );
+							$data = $user->getInfo( $array['user_id'] );
 
-								$query4 = $db->query( "SELECT * FROM usergroups WHERE id = '{$array2['displaygroup']}'" );
-								$array4 = $db->assoc( $query4 );
+							echo "<a href=\"profile?id={$data['id']}\" class=\"row {$j}\">";
 
-								echo "<span style=\"color: #{$array4['colour']}; font-weight: bold;\">";
-								echo $array2['username'];
-								echo "</span>";
-								echo ( $i == $db->num( $query ) ) ? '' : ', ';
+							echo "<div style=\"float: right; margin-top: -1px;\">";
+							
+							echo "<img src=\"_img/go.png\" alt=\"View profile\" />";
+							
+							echo "</div>";
 
-								$i++;
+							echo "<strong>" . $data['fullUsername'] . "</strong>";
+
+							echo "</a>";
+
+							$j++;
+
+							if( $j == "c" ) {
+
+								$j = "a";
 
 							}
 
-						?>
+						}
+						
+						unset( $data );
 
-					</div>
+					?>
 
 				</div>
 

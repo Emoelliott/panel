@@ -33,7 +33,6 @@
 					$username = $core->clean( $_POST['username'] );
 					$password = $core->clean( $_POST['password'] );
 					$email    = $core->clean( $_POST['email'] );
-					$habbo    = $core->clean( $_POST['habbo'] );
 					$dgroup   = $core->clean( $_POST['dgroup'] );
 					
 					$query    = $db->query( "SELECT * FROM usergroups" );
@@ -70,12 +69,12 @@
 								
 							}
 
-							$db->query( "UPDATE users SET username = '{$username}'{$password}, email = '{$email}', habbo = '{$habbo}', displaygroup = '{$dgroup}', usergroups = '{$ugroups}' WHERE id = '{$editid}'" );
+							$db->query( "UPDATE users SET username = '{$username}'{$password}, email = '{$email}', displaygroup = '{$dgroup}', usergroups = '{$ugroups}' WHERE id = '{$editid}'" );
 
 						}
 						else {
 						
-							$db->query( "INSERT INTO users VALUES (NULL, '{$username}', '{$password_enc}', '{$email}', '{$habbo}', '{$dgroup}', '{$ugroups}');" );
+							$db->query( "INSERT INTO users VALUES (NULL, '{$username}', '{$password_enc}', '{$email}', '{$dgroup}', '{$ugroups}');" );
 						
 						}
 
@@ -153,12 +152,6 @@
 										"The new email (optional).",
 										$data['email'] );
 										
-				echo $core->buildField( "text",
-										"",
-										"habbo",
-										"Habbo name",
-										"The new Habbo name (optional).",
-										$data['habbo'] );
 
 				echo $core->buildField( "select",
 										"required",
