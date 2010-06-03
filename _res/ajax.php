@@ -41,7 +41,7 @@
 
 <div class="box" id="request_<?php echo $array2['id']; ?>">
 	
-	<div class="square title" id="header_<?php echo $array2['id']; ?>" style="margin-bottom: 0px;">
+	<div class="square title noverlay" id="header_<?php echo $array2['id']; ?>" style="margin-bottom: 0px;">
 	
 		<div style="float: left; width: 70%;">
 	
@@ -267,11 +267,7 @@
 		$query = $db->query( "SELECT * FROM shouts ORDER BY time DESC LIMIT 10" );
 		while( $array = $db->assoc( $query ) ) {
 
-			$query2 = $db->query( "SELECT * FROM users WHERE id = '{$array['user']}'" );
-			$array2 = $db->assoc( $query2 );
-
-			$query3 = $db->query( "SELECT * FROM usergroups WHERE id = '{$array2['displaygroup']}'" );
-			$array3 = $db->assoc( $query3 );
+			$array2 = $user->getInfo( $array['user'] );
 
 			echo "<div class=\"shout\"" . ( $i == 1 ? ' style="border-top: none;"' : '' ) . ">";
 
@@ -279,17 +275,13 @@
 
 				$array['message'] = str_ireplace( "/me", "", $array['message'] );
 
-				echo "*<span style=\"color: #{$array3['colour']}; font-weight: bold;\">";
-				echo $array2['username'];
-				echo "</span>{$array['message']}*";
+				echo "*{$array2['fullUsernameURL']} {$array['message']}*";
 
 			}
 			else {
 
 				echo date( "[H:i]", $array['time'] ) . " ";
-				echo "<span style=\"color: #{$array3['colour']}; font-weight: bold;\">";
-				echo $array2['username'];
-				echo "</span>: {$array['message']}";
+				echo "{$array2['fullUsernameURL']}: {$array['message']}";
 
 			}
 

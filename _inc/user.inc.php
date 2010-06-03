@@ -41,7 +41,7 @@
 		
 			global $db;
 		
-			$query = $db->query( "SELECT t1.*, t2.stamp FROM users AS t1 INNER JOIN sessions AS t2 WHERE t1.id = '{$id}' AND t2.user_id = t1.id" );
+			$query = $db->query( "SELECT * FROM users WHERE id = '{$id}'" );
 			$data  = $db->assoc( $query );
 
 			$query2 = $db->query( "SELECT t1.*, t2.name FROM fields_data AS t1 INNER JOIN fields AS t2 WHERE t1.uid = '{$id}' AND t2.id = t1.fid" );
@@ -75,8 +75,9 @@
 
 			$data['usergroup'] = $array;
 
-			$data['fullUsername'] = "<span style=\"color: #{$array['colour']}\">{$data['username']}</span>";
-		
+			$data['fullUsername']    = "<span style=\"font-weight: bold; color: #{$array['colour']}\">{$data['username']}</span>";
+			$data['fullUsernameURL'] = "<a href=\"profile?id={$data['id']}\">{$data['fullUsername']}</a>";
+			
 			return $data;
 		
 		}

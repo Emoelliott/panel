@@ -45,7 +45,7 @@
 
 <div class="box">
 
-	<div class="square title" style="margin-bottom: 0px; cursor: pointer;" onclick="Radi.timetableToggle('<?php echo $i; ?>'); return false;">
+	<div class="square title noverlay" style="margin-bottom: 0px; cursor: pointer;" onclick="Radi.timetableToggle('<?php echo $i; ?>'); return false;">
 		
 		<img id="toggle_<?php echo $i; ?>" class="toggle" src="_img/<?php echo $i == 1 ? "minus" : "plus"; ?>.png" alt="Toggle" align="right" />
 

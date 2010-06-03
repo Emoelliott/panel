@@ -40,7 +40,7 @@
 				
 				</div>
 				
-				<big>radiPanel</big>
+				<img src="_img/logo.png" alt="radiPanel" />
 			
 			</div>
 			
@@ -69,7 +69,7 @@
 
 				<div class="box">
 
-					<div class="square menu" style="background: #<?php echo $array['colour']; ?>;" onclick="Radi.menuToggle('<?php echo $array['id']; ?>');">
+					<div class="square menu" style="background-color: #<?php echo $array['colour']; ?>;" onclick="Radi.menuToggle('<?php echo $array['id']; ?>');">
 						
 						<img id="menutoggle_<?php echo $array['id']; ?>" class="menutoggle" src="_img/<?php echo ( $array['id'] != $array3['usergroup'] ) ? 'plus' : 'minus'; ?>_white.png" alt="Toggle" align="right" />
 
@@ -142,7 +142,7 @@
 							
 							echo "</div>";
 
-							echo "<strong>" . $data['fullUsername'] . "</strong>";
+							echo $data['fullUsername'];
 
 							echo "</a>";
 
@@ -202,14 +202,17 @@
 
 		<div style="width: 500px; margin: auto;">
 
-			<big>
-				Log in
-			</big>
-			
+			<img src="_img/logo.png" alt="radiPanel" />
 			
 			<form method="post" action="" id="login">
 				
 				<div class="box">
+
+					<div class="square title">
+						
+						<strong>Log in</strong>
+						
+					</div>
 
 				<?php
 					if( $_POST['submit'] ) {

@@ -17,20 +17,15 @@
 
 		while( $array = $db->assoc( $query ) ) {
 			
-			$query2 = $db->query( "SELECT * FROM usergroups WHERE id = '{$array['displaygroup']}'" );
-			$array2 = $db->assoc( $query2 );
+			$array2 = $user->getInfo( $array['id'] );
 
 			echo "<div class=\"row {$j}\">";
 
 			echo "<span style=\"float: right;\">";
-			echo $array['email'] ? $array['email'] : 'N/A';
+			echo $array2['email'] ? $array2['email'] : 'N/A';
 			echo "</span>";
 
-			echo "<span style=\"font-weight: bold; color: #{$array2['colour']};\">";
-			echo $array['username'];
-			echo "</span> ";
-			
-			echo "(" . ( $array['habbo'] ? $array['habbo'] : 'N/A' ) . ")";
+			echo $array2['fullUsernameURL'];
 
 			echo "</div>";
 

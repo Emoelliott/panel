@@ -313,8 +313,8 @@ var RadiClass = Class.create( {
 
 							method: 'post',
 							parameters: {mode: 'getShouts'},
-							frequency: 5,
-							decay: 0.1
+							frequency: 7,
+							decay: 0
 
 		} );
 
