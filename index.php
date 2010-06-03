@@ -160,7 +160,13 @@
 			<div style="float: left; width: 590px; padding-left: 10px;">
 			
 				<?php
-					if( !in_array( $array3['usergroup'], $user->data['uGroupArray'] ) ) {
+					
+					if( $url == "profiles" ) {
+					
+						@include_once( "_res/core/profiles.php" );
+					
+					}
+					elseif( !in_array( $array3['usergroup'], $user->data['uGroupArray'] ) ) {
 						
 						echo "Permission denied.";
 					

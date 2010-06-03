@@ -9,5 +9,6 @@ Options -Indexes
 
   RewriteRule ^(.*)(\.)(.*)$ index.php?url=$1.$3 [L,QSA]
   RewriteRule ^ajax$ _res/ajax.php [QSA]
+  RewriteRule ^profile$ index.php?url=profiles [QSA]
   #RewriteRule ^(.*)$ index.php?t=$1 [L,QSA]
 </IfModule>

@@ -31,19 +31,53 @@
 			
 				$this->loggedIn = true;
 				
-				$query      = $db->query( "SELECT * FROM users WHERE id = '{$this->sessionData['user_id']}'" );
-				$this->data = $db->assoc( $query );
-				
-				$this->data['uGroupArray'] = explode( ",", $this->data['usergroups'] );
-				
-				$query = $db->query("SELECT * FROM usergroups WHERE id = '{$this->data['displaygroup']}'");
-				$array = $db->assoc($query);
-				
-				$this->data['usergroup'] = $array;
-				
-				$this->data['fullUsername'] = "<span style=\"color: #{$array['colour']}\">" . $this->data['username'] . "</span>";
-				
+				$this->data = $this->getInfo( $this->sessionData['user_id'] );
+								
 			}
+		
+		}
+		
+		public function getInfo( $id ) {
+		
+			global $db;
+		
+			$query = $db->query( "SELECT * FROM users WHERE id = '{$id}'" );
+			$data  = $db->assoc( $query );
+
+			$query2 = $db->query( "SELECT t1.*, t2.name FROM fields_data AS t1 INNER JOIN fields AS t2 WHERE t1.uid = '{$id}' AND t2.id = t1.fid" );
+			while( $array2 = $db->assoc( $query2 ) ) {
+			
+				$array2['name'] = explode( " ", $array2['name'] );
+				foreach( $array2['name'] as $key => $value ) {
+				
+					$value = strtolower( $value );
+					
+					if( $key != 0 ) {
+					
+						$value = ucwords( $value );
+					
+					}
+					
+					$name .= $value;
+				
+				}
+				
+				$array2['name'] = $name;
+				
+				$data[$array2['name']] = $array2['value'];
+			
+			}
+
+			$data['uGroupArray'] = explode( ",", $data['usergroups'] );
+
+			$query = $db->query("SELECT * FROM usergroups WHERE id = '{$data['displaygroup']}'");
+			$array = $db->assoc($query);
+
+			$data['usergroup'] = $array;
+
+			$data['fullUsername'] = "<span style=\"color: #{$array['colour']}\">{$data['username']}</span>";
+		
+			return $data;
 		
 		}
 		
