@@ -260,4 +260,82 @@
 		}
 		
 	}
+	elseif( $_POST['mode'] == "getShouts" ) {
+
+		$i = 1;
+
+		$query = $db->query( "SELECT * FROM shouts ORDER BY time DESC LIMIT 10" );
+		while( $array = $db->assoc( $query ) ) {
+
+			$query2 = $db->query( "SELECT * FROM users WHERE id = '{$array['user']}'" );
+			$array2 = $db->assoc( $query2 );
+
+			$query3 = $db->query( "SELECT * FROM usergroups WHERE id = '{$array2['displaygroup']}'" );
+			$array3 = $db->assoc( $query3 );
+
+			echo "<div class=\"shout\"" . ( $i == 1 ? ' style="border-top: none;"' : '' ) . ">";
+
+			if( preg_match( "/\/me/", $array['message'] ) ) {
+
+				$array['message'] = str_ireplace( "/me", "", $array['message'] );
+
+				echo "*<span style=\"color: #{$array3['colour']}; font-weight: bold;\">";
+				echo $array2['username'];
+				echo "</span>{$array['message']}*";
+
+			}
+			else {
+
+				echo date( "[H:i]", $array['time'] ) . " ";
+				echo "<span style=\"color: #{$array3['colour']}; font-weight: bold;\">";
+				echo $array2['username'];
+				echo "</span>: {$array['message']}";
+
+			}
+
+			echo "</div>";
+
+			$i++;
+
+		}
+
+		if( $db->num( $query ) == 0 ) {
+
+			echo "<div class=\"shout\">There are currently no shouts!</div>";
+
+		}
+
+	}
+	elseif( $_POST['mode'] == "sendShout" and $_POST['shout'] ) {
+
+		$shout = $core->clean( $_POST['shout'] );
+		$time  = time();
+
+		if( $shout == "/prune" and $user->hasGroup( '4' ) ) {
+
+			$db->query( "DELETE FROM shouts" );
+			$db->query( "INSERT INTO shouts VALUES (NULL, '{$user->data['id']}', '/me just pruned the shoutbox', '{$time}');" );
+
+		}
+		elseif( preg_match( "/\/prune (.*?)/", $shout ) and $user->hasGroup( '4' ) ) {
+
+			$user = end( explode( "/prune ", $shout ) );
+
+			$query = $db->query( "SELECT * FROM users WHERE username = '{$user}'" );
+			if( $db->num( $query ) != 0 ) {
+
+				$array = $db->assoc( $query );
+
+				$db->query( "DELETE FROM shouts WHERE user = '{$array['id']}'" );
+
+			}
+
+		}
+		else {
+
+			$db->query( "INSERT INTO shouts VALUES (NULL, '{$user->data['id']}', '{$shout}', '{$time}');" );
+
+		}
+
+	}
 ?>

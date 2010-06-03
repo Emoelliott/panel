@@ -77,7 +77,7 @@
 
 				if( $array2['protected'] != 1) {
 
-					echo "<a href=\"admin.addMenuItem?id={$array2['id']}\">";
+					echo "<a href=\"admin.addMenu?id={$array2['id']}\">";
 					echo "<img src=\"_img/pencil.png\" alt=\"Edit\" />";
 					echo "</a>";
 

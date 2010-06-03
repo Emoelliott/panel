@@ -252,3 +252,61 @@ td.field {
 	text-align: right;
 
 }
+
+input.shoutbox {
+
+	border-bottom: none;
+
+	font-size: 12px;
+	font-weight: normal;
+
+	width: 558px;
+	display: block;
+
+	-webkit-border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+
+}
+
+input.shoutbox:focus {
+
+	background: #fff;
+
+	border-color: #e0e0e0;
+
+}
+
+div#shoutbox {
+
+	width: 568px;
+	height: 175px;
+
+	overflow: auto;
+
+	background: #fafafa;
+
+	border: 1px #e0e0e0 solid;
+
+
+	border-bottom-width: 2px;
+
+	-webkit-border-bottom-right-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+
+}
+
+div#shoutbox div.shout {
+
+	padding: 5px;
+
+	border-top: 1px #f0f0f0 solid;
+
+}

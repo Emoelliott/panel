@@ -96,18 +96,10 @@
 			
 			}
 			else {
-			
-				$oldID = $this->sessionID;
-				
-				session_regenerate_id();
-				
-				$newID = $core->encrypt( session_id() );
 				
 				$time  = time();
 				
-				$db->query( "UPDATE sessions SET session_id = '{$newID}', stamp = '{$time}' WHERE session_id = '{$oldID}'" );
-				
-				$this->sessionID = $newID;
+				$db->query( "UPDATE sessions SET stamp = '{$time}' WHERE session_id = '{$this->sessionID}'" );
 				
 			}
 		

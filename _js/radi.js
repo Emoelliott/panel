@@ -305,6 +305,34 @@ var RadiClass = Class.create( {
 							
 		} );
 
+	},
+
+	shoutboxStart: function() {
+
+		shoutbox = new Ajax.PeriodicalUpdater( 'shoutbox', 'ajax', {
+
+							method: 'post',
+							parameters: {mode: 'getShouts'},
+							frequency: 5,
+							decay: 0.1
+
+		} );
+
+	},
+
+	shoutboxSend: function() {
+
+		shout = $('shout').value;
+		$('shout').value = "";
+
+		new Ajax.Request( 'ajax', {
+
+							method: 'post',
+							parameters: {mode: 'sendShout', shout: shout},
+							onComplete: function() { shoutbox.stop(); shoutbox.start(); }
+
+		} );
+
 	}
 	
 } );
