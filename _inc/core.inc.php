@@ -284,6 +284,70 @@
 			return $return;
 		}
 
+		public function parseBBCode( $string ) {
+	
+			$search = array( '/\[b\](.*?)\[\/b\]/is',  
+				'/\[i\](.*?)\[\/i\]/is',
+				'/\[u\](.*?)\[\/u\]/is',
+				'/\[s\](.*?)\[\/s\]/is',
+				'/\[indent\](.*?)\[\/indent\]/is',
+				'/\[url\=(.*?)\](.*?)\[\/url\]/is',
+				'/\[url\](.*?)\[\/url\]/is',
+				'/\[left\](.*?)\[\/left\]/is',
+				'/\[center\](.*?)\[\/center\]/is',
+				'/\[right\](.*?)\[\/right\]/is',
+				'/\[img\](.*?)\[\/img\]/is',
+				'/\[imgalign=(.*?)\](.*?)\[\/imgalign\]/is' );
+	
+			$replace = array( '<strong>$1</strong>',
+				'<em>$1</em>',
+				'<u>$1</u>',
+				'<strike>$1</strike>',
+				'<div style="padding: 0px 15px;">$1</div>',
+				'<a href="$1">$2</a>',
+				'<a href="$1">$1</a>',
+				'<div align="left">$1</div>',
+				'<div align="center">$1</div>',
+				'<div align="right">$1</div>',
+				'<img src="$1" alt="" />',
+				'<img align="$1" src="$2" alt="" />' );
+	
+			$string = preg_replace( $search, $replace, $string );
+	
+			return $string;
+	
+		}
+
+		public function niceDate( $date ) {
+		
+			$yday = strtotime( "yesterday" );
+		
+			$dmyref  = date( "dmY" );
+			$dmyref2 = date( "dmY", $yday );
+			$dmy     = date( "dmY", $date );
+			
+			if( $dmyref == $dmy ) {
+			
+				$build = "Today";
+			
+			}
+			elseif( $dmyref2 == $dmy ) {
+			
+				$build = "Yesterday";
+			
+			}
+			else {
+			
+				$build = date( "d/m/Y", $date );
+			
+			}
+			
+			$build .= " at " . date( "h:i A", $date );
+			
+			return $build;
+		
+		}
+
 	}
 
 	$core = new Core();

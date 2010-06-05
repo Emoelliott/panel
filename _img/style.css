@@ -21,6 +21,7 @@ body, a, td, th, input, textarea, select {
 a {
 
 	font-weight: bold;
+	font-size: inherit;
 
 }
 
@@ -120,27 +121,19 @@ big {
 	margin-bottom: 0px;
 
 	cursor: pointer;
-	
-	background: url( overlay.png ) repeat-x top left;
 
 }
 
 .square.title {
 
 	color: #444;
+	 
+	background: #eaeaea;
 	
-	background: url( overlay.png ) repeat-x top right #eee;
-
 	border-radius: 3px 3px 0px 0px;
 	-moz-border-radius: 3px 3px 0px 0px;
 	-webkit-border-top-right-radius: 0px;
 	-webkit-border-top-left-radius: 0px;
-
-}
-
-.square.title.noverlay {
-
-	background-position: top left;
 
 }
 

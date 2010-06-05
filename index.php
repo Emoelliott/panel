@@ -135,12 +135,8 @@
 							$data = $user->getInfo( $array['user_id'] );
 
 							echo "<a href=\"profile?id={$data['id']}\" class=\"row {$j}\">";
-
-							echo "<div style=\"float: right; margin-top: -1px;\">";
 							
-							echo "<img src=\"_img/go.png\" alt=\"View profile\" />";
-							
-							echo "</div>";
+							echo "<img src=\"_img/go.png\" alt=\"View profile\" align=\"right\" style=\"margin-top: -1px;\" />";
 
 							echo $data['fullUsername'];
 
